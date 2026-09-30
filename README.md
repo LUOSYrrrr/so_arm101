@@ -48,3 +48,7 @@ HF 已公开发布：
 旧 `tools/hardware_dashboard/` 的命令入口和旧 ACT Python 入口保留为转发脚本；后续开发修改本目录内的实现。
 
 独立克隆：`git clone https://github.com/LUOSYrrrr/so_arm101.git`。新机器默认使用本仓库内 `datasets/`、`outputs/`；可用 `SO101_STORAGE_ROOT` 指定其他存储根目录。服务器只训练时无需启动硬件面板。
+
+## Diffusion Policy 基线
+
+新增双视角 Diffusion Policy 独立训练入口和 Spartan 作业脚本，见 [baselines/diffusion/README.md](baselines/diffusion/README.md)。复用相同 30 条成功示范与固定数据版本，默认直接分别训练两个任务 100,000 步，并在线同步 W&B。
