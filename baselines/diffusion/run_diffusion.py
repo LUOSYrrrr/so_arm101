@@ -27,7 +27,7 @@ def command(args, entry):
     return [sys.executable,'-m','lerobot.scripts.lerobot_train',*options]
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--task',choices=['pick_lift','pick_place'],required=True)
+    p=argparse.ArgumentParser();p.add_argument('--task',choices=['pick_lift','pick_place','battery_insertion'],required=True)
     p.add_argument('--output',required=True);p.add_argument('--dataset-root');p.add_argument('--entity')
     p.add_argument('--steps',type=int);p.add_argument('--smoke',action='store_true');p.add_argument('--execute',action='store_true')
     p.add_argument('--wandb-mode',choices=['online','offline'],default='online');args=p.parse_args()

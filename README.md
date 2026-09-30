@@ -6,8 +6,8 @@
 so_arm101/
 ├── hardware/dashboard/     # 双视角预览、遥操录制、续录、数据校验
 ├── data/
-│   ├── datasets.json       # 两个 HF 数据集的固定版本与成功 episode 索引
-│   └── publish_datasets.py # 制作上传副本、校验并发布 HF
+│   ├── datasets.json       # HF 数据集固定版本与成功 episode 索引
+│   └── publish_datasets.py # 方块任务上传脚本
 ├── baselines/
 │   └── act/
 │       ├── run_act.py      # 两个任务分别训练 ACT
@@ -21,6 +21,7 @@ so_arm101/
 
 - 双视角：腕部 `observation.images.wrist`、第三视角 `observation.images.third_person`。
 - 两个任务：Pick-and-Lift；抓取黑方块放到蓝区并松开。各有 30 条通过技术校验的人工成功示范。
+- 电池插入 v2：100 条人工成功示范，任务标签已在公开导出副本中修正；ACT、Diffusion Policy、SmolVLA 独立训练入口见 [baselines/battery_insertion/README.md](baselines/battery_insertion/README.md)。
 - ACT 使用同一实现、独立数据与 checkpoint；先 batch size 8、100 步测试，再正式训练。没有开始训练或 RL。
 - LeRobot 使用外层 `lerobot/` 官方独立 checkout，固定 commit `a07f22e22ce88cddff1f6eddced9ea008fbfc37c`。不复制或重写机器人控制代码。
 
@@ -44,6 +45,7 @@ python hardware/dashboard/server.py
 HF 已公开发布：
 - https://huggingface.co/datasets/LUOSYrrrrr/so101_pick_lift_dual_rgb_20260929
 - https://huggingface.co/datasets/LUOSYrrrrr/so101_pick_place_blue_dual_rgb_20260929
+- https://huggingface.co/datasets/LUOSYrrrrr/so101_battery_insertion_v2
 
 旧 `tools/hardware_dashboard/` 的命令入口和旧 ACT Python 入口保留为转发脚本；后续开发修改本目录内的实现。
 

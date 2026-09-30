@@ -13,9 +13,9 @@
 set -euo pipefail
 : "${SLURM_JOB_ID:?Submit with sbatch; do not run training on a login node}"
 : "${BENCHMARK_SCRIPTS:?Set absolute path to so_arm101/baselines/diffusion}"
-: "${DP_TASK:?Set DP_TASK to pick_lift or pick_place}"
+: "${DP_TASK:?Set DP_TASK to pick_lift, pick_place, or battery_insertion}"
 : "${DP_OUTPUT_BASE:?Set absolute path to persistent project storage}"
-case "$DP_TASK" in pick_lift|pick_place) ;; *) echo 'Invalid DP_TASK' >&2; exit 2;; esac
+case "$DP_TASK" in pick_lift|pick_place|battery_insertion) ;; *) echo 'Invalid DP_TASK' >&2; exit 2;; esac
 case "${DP_SMOKE:-0}" in 0|1) ;; *) echo 'DP_SMOKE must be 0 or 1' >&2; exit 2;; esac
 case "$BENCHMARK_SCRIPTS:$DP_OUTPUT_BASE" in /*:/*) ;; *) echo 'Use absolute script/output paths' >&2; exit 2;; esac
 

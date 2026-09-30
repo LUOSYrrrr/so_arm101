@@ -14,7 +14,7 @@
 set -euo pipefail
 cd "${SLURM_SUBMIT_DIR:?}"
 : "${SLURM_JOB_ID:?Submit with sbatch}"
-: "${SVLA_TASK:?Set pick_lift or pick_place}"
+: "${SVLA_TASK:?Set pick_lift, pick_place, or battery_insertion}"
 export HF_HOME="$PWD/cache/huggingface"
 export TORCH_HOME="$PWD/cache/torch"
 export OMP_NUM_THREADS="${SLURM_CPUS_PER_TASK:-8}"

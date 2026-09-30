@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[2]
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--task', choices=['pick_lift', 'pick_place'], required=True)
+    parser.add_argument('--task', choices=['pick_lift', 'pick_place', 'battery_insertion'], required=True)
     parser.add_argument('--output', required=True, type=Path)
     parser.add_argument('--steps', type=int, default=20000)
     parser.add_argument('--resume-from', type=Path)
